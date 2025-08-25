@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-3xl font-bold mb-6">Dashboard</h2>
+
+<div class="bg-white dark:bg-gray-800 shadow-lg p-6 rounded-xl mb-6">
+  <p class="text-lg">Account Balance: <span class="font-bold text-green-500">${{ balance }}</span></p>
+</div>
+
+<!-- Plans -->
+<h3 class="text-2xl font-bold mb-4">Plans</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  {% for plan in plans %}
+  <div class="p-4 bg-white dark:bg-gray-700 rounded-xl shadow-lg text-center">
+    <h4 class="font-bold">{{ plan.name }}</h4>
+    <p>Stake: ${{ plan.stake }}</p>
+    <p>Daily ROI: {{ plan.roi }}%</p>
+    <p>Duration: {{ plan.duration }}</p>
+    <form method="POST" action="/subscribe/{{ plan.id }}">
+      <button class="mt-3 px-4 py-2 bg-indigo-600 text-white rounded-lg">Subscribe</button>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Actions -->
+<div class="mt-8 space-x-4">
+  <a href="/deposit" class="px-6 py-3 bg-green-500 text-white rounded-lg">Deposit</a>
+  <a href="/withdraw" class="px-6 py-3 bg-red-500 text-white rounded-lg">Withdraw</a>
+</div>
+{% endblock %}
