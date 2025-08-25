@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-6">Deposit</h2>
+<p class="mb-4">Minimum deposit: <span class="font-bold">$50</span></p>
+
+<div class="bg-white dark:bg-gray-800 shadow p-6 rounded-xl">
+  <p class="mb-2">Choose your payment method:</p>
+  <ul>
+    <li class="mb-3">Bitcoin Address: 
+      <span id="btc">bc1q4c6f7xzsekkpvd2guwkaww4m7se9yjlrxnrjc7</span> 
+      <button onclick="copy('btc')" class="ml-2 bg-indigo-600 text-white px-2 py-1 rounded">Copy</button>
+    </li>
+    <li class="mb-3">USDT (ERC20) Address: 
+      <span id="usdt">0x08cFE6DDC3b58B0655dD1c9214BcfdDBD3855CCA</span> 
+      <button onclick="copy('usdt')" class="ml-2 bg-indigo-600 text-white px-2 py-1 rounded">Copy</button>
+    </li>
+    <li class="mb-3">Ethereum Address: 
+      <span id="eth">0x08cFE6DDC3b58B0655dD1c9214BcfdDBD3855CCA</span> 
+      <button onclick="copy('eth')" class="ml-2 bg-indigo-600 text-white px-2 py-1 rounded">Copy</button>
+    </li>
+  </ul>
+</div>
+
+<script>
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied: " + text);
+}
+</script>
+{% endblock %}
