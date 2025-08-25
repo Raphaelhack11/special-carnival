@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-6">Withdraw</h2>
+<p class="mb-4">Minimum withdrawal: <span class="font-bold">$70</span></p>
+
+<form method="POST" class="max-w-md bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+  <input type="number" name="amount" placeholder="Enter amount" class="w-full mb-3 p-3 border rounded-lg"/>
+  <select name="method" class="w-full mb-3 p-3 border rounded-lg">
+    <option value="btc">Bitcoin</option>
+    <option value="usdt">USDT (ERC20)</option>
+    <option value="eth">Ethereum</option>
+  </select>
+  <input type="text" name="address" placeholder="Your wallet address" class="w-full mb-3 p-3 border rounded-lg"/>
+  <button type="submit" class="w-full bg-red-500 text-white py-3 rounded-lg">Request Withdrawal</button>
+</form>
+{% endblock %}
